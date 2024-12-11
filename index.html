@@ -41,9 +41,16 @@
         button:hover {
             background-color: #A9A9A9;
         }
+        img {
+            max-width: 100%; /* Hace que la imagen se ajuste al ancho de la pantalla */
+            height: auto;
+        }
     </style>
 </head>
 <body>
+    <!-- Imagen de la montaña al principio -->
+    <img src="https://example.com/montana.jpg" alt="Imagen de montaña">
+
     <h1>Formulario de Tarjeta Federativa</h1>
     <form id="formulario">
         <label for="nombre">Nombre y apellidos del socio:</label>
@@ -94,6 +101,14 @@
             <option value="0">No, 0€</option>
         </select><br><br>
 
+        <!-- Nuevo campo de "Gastos Bancarios" -->
+        <label for="gastosBancarios">Gastos Bancarios:</label>
+        <select id="gastosBancarios" required>
+            <option value="">Elige una opción del listado</option>
+            <option value="2">Normal, 2€</option>
+            <option value="5">Urgente, 5€</option>
+        </select><br><br>
+
         <button type="button" onclick="calcular()">Calcular</button><br><br>
     </form>
 
@@ -113,15 +128,15 @@
             const suplementoBTT = parseInt(document.getElementById('suplementoBTT').value);
             const suplementoSki = parseInt(document.getElementById('suplementoSki').value);
             const suplementoSnowboard = parseInt(document.getElementById('suplementoSnowboard').value);
+            const gastosBancarios = parseInt(document.getElementById('gastosBancarios').value);
 
             // Validar si se han completado todos los campos
-            if (isNaN(nuevoSocio) || isNaN(modalidad) || isNaN(suplementoBTT) || isNaN(suplementoSki) || isNaN(suplementoSnowboard)) {
+            if (isNaN(nuevoSocio) || isNaN(modalidad) || isNaN(suplementoBTT) || isNaN(suplementoSki) || isNaN(suplementoSnowboard) || isNaN(gastosBancarios)) {
                 alert("Por favor, completa todos los campos.");
                 return;
             }
 
-            // Calcular el coste total con los 2€ adicionales
-            const gastosBancarios = 2;
+            // Calcular el coste total con los gastos bancarios elegidos
             const total = nuevoSocio + modalidad + suplementoBTT + suplementoSki + suplementoSnowboard + gastosBancarios;
             document.getElementById('resultado').innerText = `Total: ${total} Euros`;
             document.getElementById('resultado').style.display = 'block';
@@ -135,7 +150,7 @@
                 Suplemento BTT: ${document.getElementById('suplementoBTT').options[document.getElementById('suplementoBTT').selectedIndex].text},
                 Suplemento Ski Alpino: ${document.getElementById('suplementoSki').options[document.getElementById('suplementoSki').selectedIndex].text},
                 Suplemento Snowboard: ${document.getElementById('suplementoSnowboard').options[document.getElementById('suplementoSnowboard').selectedIndex].text},
-                Gastos bancarios: Sí, 2€,
+                Gastos Bancarios: ${document.getElementById('gastosBancarios').options[document.getElementById('gastosBancarios').selectedIndex].text},
                 Coste total: ${total} Euros
             `;
             document.getElementById('respuestas').innerText = respuestas;
