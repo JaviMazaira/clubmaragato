@@ -22,13 +22,16 @@
             font-size: 18px; /* Se reduce el tamaño de letra para las respuestas */
             padding: 10px;
             display: none;
+            margin-top: 10px; /* Reducción de espacio entre el resultado y el resumen */
         }
         .aviso {
             background-color: #FFFF00;
-            color: black;
+            color: red; /* Cambio a color rojo */
             font-size: 24px;
+            font-weight: bold; /* Hacer en negrita */
             padding: 10px;
             display: none;
+            margin-top: 10px; /* Reducción de espacio */
         }
         button {
             background-color: #D3D3D3;
@@ -41,16 +44,9 @@
         button:hover {
             background-color: #A9A9A9;
         }
-        img {
-            max-width: 100%; /* Hace que la imagen se ajuste al ancho de la pantalla */
-            height: auto;
-        }
     </style>
 </head>
 <body>
-    <!-- Imagen de la montaña al principio -->
-    <img src="https://example.com/montana.jpg" alt="Imagen de montaña">
-
     <h1>Formulario de Tarjeta Federativa</h1>
     <form id="formulario">
         <label for="nombre">Nombre y apellidos del socio:</label>
